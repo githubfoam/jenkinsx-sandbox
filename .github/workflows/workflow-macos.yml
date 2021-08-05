@@ -23,7 +23,7 @@ jobs:
       run: |
         brew tap jenkins-x/jx 
         brew install jx
-        brew install kops    
+        #brew install kops    
         jx version    
 
 # https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-python#using-a-specific-python-version
