@@ -3,7 +3,7 @@ name: "Jenkins X CI workflow ubuntu"
 
 on:
   push:
-    branches: [ dev ]
+    branches: [ test ]
 
 
 jobs:
@@ -19,8 +19,11 @@ jobs:
         python-version: 3.8
     - name: "Install Jenkins X"
       run: |
-        curl -L "https://github.com/jenkins-x/jx/releases/download/$(curl --silent https://api.github.com/repos/jenkins-x/jx/releases/latest | jq -r '.tag_name')/jx-linux-amd64.tar.gz" | tar xzv "jx"
-
+        mkdir -p ~/.jx/bin
+        curl -L "https://github.com/jenkins-x/jx/releases/download/$(curl --silent "https://github.com/jenkins-x/jx/releases/latest" | sed 's#.*tag/\(.*\)\".*#\1#')/jx-linux-amd64.tar.gz" | tar xzv -C ~/.jx/bin
+        export PATH=$PATH:~/.jx/bin
+        echo 'export PATH=$PATH:~/.jx/bin' >> ~/.bashrc
+        jx version
 
   build-ubuntu-1804-job:
     name: "Jenkins X  on ubuntu 18.04"
@@ -45,9 +48,11 @@ jobs:
     - uses: actions/checkout@v2
     - name: "Install Jenkins X"
       run: |
-        curl -L "https://github.com/jenkins-x/jx/releases/download/$(curl --silent https://api.github.com/repos/jenkins-x/jx/releases/latest | jq -r '.tag_name')/jx-linux-amd64.tar.gz" | tar xzv "jx"
-
-     
+        mkdir -p ~/.jx/bin
+        curl -L "https://github.com/jenkins-x/jx/releases/download/$(curl --silent "https://github.com/jenkins-x/jx/releases/latest" | sed 's#.*tag/\(.*\)\".*#\1#')/jx-linux-amd64.tar.gz" | tar xzv -C ~/.jx/bin
+        export PATH=$PATH:~/.jx/bin
+        echo 'export PATH=$PATH:~/.jx/bin' >> ~/.bashrc
+        jx version
 
   ubuntu-2004-job:
     name: "Jenkins X on ubuntu-20.04"
@@ -59,6 +64,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: "Install Jenkins X"
       run: |
-        curl -L "https://github.com/jenkins-x/jx/releases/download/$(curl --silent https://api.github.com/repos/jenkins-x/jx/releases/latest | jq -r '.tag_name')/jx-linux-amd64.tar.gz" | tar xzv "jx"
-
-        
+        mkdir -p ~/.jx/bin
+        curl -L "https://github.com/jenkins-x/jx/releases/download/$(curl --silent "https://github.com/jenkins-x/jx/releases/latest" | sed 's#.*tag/\(.*\)\".*#\1#')/jx-linux-amd64.tar.gz" | tar xzv -C ~/.jx/bin
+        export PATH=$PATH:~/.jx/bin
+        echo 'export PATH=$PATH:~/.jx/bin' >> ~/.bashrc
+        jx version
