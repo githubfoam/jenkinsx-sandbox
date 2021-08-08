@@ -1,0 +1,73 @@
+name: "test Jenkins X CI workflow ubuntu"
+
+
+on:
+  push:
+    branches: [ test ]
+
+
+jobs:
+
+  build-ubuntu-latest-job:
+    name: "Jenkins X  on ubuntu-latest - ubuntu 18.04"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    # - name: "Set up Python 3.8"
+    #   uses: actions/setup-python@v1
+    #   with:
+    #     python-version: 3.8
+    - name: "os fingerprinting"
+      run: hostnamectl status             
+    # - name: "Install Jenkins X"
+    #   run: |
+    #     mkdir -p ~/.jx/bin
+    #     curl -L "https://github.com/jenkins-x/jx/releases/download/$(curl --silent "https://github.com/jenkins-x/jx/releases/latest" | sed 's#.*tag/\(.*\)\".*#\1#')/jx-linux-amd64.tar.gz" | tar xzv -C ~/.jx/bin
+    #     export PATH=$PATH:~/.jx/bin
+    #     echo 'export PATH=$PATH:~/.jx/bin' >> ~/.bashrc
+    #     jx version
+
+  # build-ubuntu-1804-job:
+  #   name: "Jenkins X  on ubuntu 18.04"
+  #   runs-on: ubuntu-18.04 # 18.04
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: "Install Jenkins X"
+  #     run: |
+  #       mkdir -p ~/.jx/bin
+  #       curl -L "https://github.com/jenkins-x/jx/releases/download/$(curl --silent "https://github.com/jenkins-x/jx/releases/latest" | sed 's#.*tag/\(.*\)\".*#\1#')/jx-linux-amd64.tar.gz" | tar xzv -C ~/.jx/bin
+  #       export PATH=$PATH:~/.jx/bin
+  #       echo 'export PATH=$PATH:~/.jx/bin' >> ~/.bashrc
+  #       jx version
+
+  # ubuntu-1604-job:
+  #   name: "Jenkins X on ubuntu-16.04"
+  #   runs-on: ubuntu-16.04   
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: "os fingerprinting"
+  #     run: hostnamectl status         
+  #   - uses: actions/checkout@v2
+  #   - name: "Install Jenkins X"
+  #     run: |
+  #       mkdir -p ~/.jx/bin
+  #       curl -L "https://github.com/jenkins-x/jx/releases/download/$(curl --silent "https://github.com/jenkins-x/jx/releases/latest" | sed 's#.*tag/\(.*\)\".*#\1#')/jx-linux-amd64.tar.gz" | tar xzv -C ~/.jx/bin
+  #       export PATH=$PATH:~/.jx/bin
+  #       echo 'export PATH=$PATH:~/.jx/bin' >> ~/.bashrc
+  #       jx version
+
+  # ubuntu-2004-job:
+  #   name: "Jenkins X on ubuntu-20.04"
+  #   runs-on: ubuntu-20.04   
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: "os fingerprinting"
+  #     run: hostnamectl status         
+  #   - uses: actions/checkout@v2
+  #   - name: "Install Jenkins X"
+  #     run: |
+  #       mkdir -p ~/.jx/bin
+  #       curl -L "https://github.com/jenkins-x/jx/releases/download/$(curl --silent "https://github.com/jenkins-x/jx/releases/latest" | sed 's#.*tag/\(.*\)\".*#\1#')/jx-linux-amd64.tar.gz" | tar xzv -C ~/.jx/bin
+  #       export PATH=$PATH:~/.jx/bin
+  #       echo 'export PATH=$PATH:~/.jx/bin' >> ~/.bashrc
+  #       jx version
