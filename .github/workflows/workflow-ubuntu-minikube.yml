@@ -127,4 +127,5 @@ jobs:
         # X Exiting due to RSRC_OVER_ALLOC_MEM: Requested memory allocation 8048MB is more than your system limit 6953MB.
         minikube start --driver=docker --cpus 2 --memory 6952 --disk-size=100g --addons=ingress --vm=true 
         minikube version --short
-        minikube version --components
+        # unknown flag: --components
+        # minikube version --components
